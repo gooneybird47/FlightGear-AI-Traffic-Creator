@@ -94,6 +94,7 @@ txt_label = tk.Label(root, text='If you have never created a traffic before or u
                      font=('Arial', 10), bg='powder blue', anchor="w", padx=10, justify='left')
 txt_label.grid(row=16, rowspan=9, column=0, columnspan=3)
 
+
 # Define Comment
 def add_comment():
     print('<!-- ' + comment.get() + ' -->')
@@ -359,8 +360,8 @@ f9.grid(row=11, column=5, padx=5, pady=5)
 
 # Return Flight
 
-returnflight_label = tk.Label(root, text='Return Flight', font=('Arial', 10, 'bold'))
-returnflight_label.grid(row=12, column=4, columnspan=2, padx=5, pady=5)
+returnflight_label = tk.Label(root, text='Return Flight', font=('Arial', 11, 'bold'), width='20', fg='blue')
+returnflight_label.grid(row=12, column=5, columnspan=2, padx=5, pady=5)
 
 rf1_label = tk.Label(root, text='Call Sign', font=('Arial', 10), width='20', anchor="e")
 rf1_label.grid(row=13, column=4)
