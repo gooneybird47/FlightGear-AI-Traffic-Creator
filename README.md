@@ -5,7 +5,7 @@
 ### Requirements: Python 3 (written in 3.8)
 
 
-![Screenshot](screenshot/screenshot.jpg  =750x)
+![Screenshot](screenshot/screenshot.jpg)
 
 I believe Linux and Mac already have Python installed by default but windows does not so it will need to be installed if you don't already have it.
 
