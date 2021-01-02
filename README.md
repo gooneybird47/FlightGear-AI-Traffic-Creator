@@ -20,6 +20,8 @@ The program should be self explanatory if you have delt with traffic files befor
 
 You can create as many aircraft and flights as you wish by filling in the details then pressing the "Create Aircraft Section" then "Create Flight Section", this process can be repeated as often as you like but remember to alter the relevant details so you don't end up with duplicate flights. 
 
+**Do not close the program until you have finished all tasks and saved the file as this will wipe all data.** Saving the file will automatically close the program.
+
 All you need to enter is the actual text not the .xml tags they will be automatically entered when you save the file.
 
 When finished save the file with the name of your choice, all being well it can be copied straight into your AI/Traffic folder and ready for use.
