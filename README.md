@@ -24,7 +24,7 @@ All you need to enter is the actual text not the .xml tags they will be automati
 
 When finished save the file with the name of your choice, all being well it can be copied straight into your AI/Traffic folder and ready for use.
 
-This is not and xml editor, it can not edit traffic files, I created it to quickly write test or local files so it's not really a program for writing airline schedules.
+This is not an xml editor, it can not edit traffic files, I created it to quickly write test or local files so it's not really a program for writing airline schedules.
 
-###Disclaimer
+### Disclaimer
 This is my first Python program so any errors and bugs are entirely down to me. ;)
