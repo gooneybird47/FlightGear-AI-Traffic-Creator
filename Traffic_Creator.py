@@ -34,13 +34,13 @@ sys.stdout = open('traffic_test.xml', 'a')
 
 # Button click Counters
 
-count_aircraft, count_flight = 0, 0
+count_comment, count_aircraft, count_outbound_flight, count_return_flight = 0, 0, 0, 0
 
 
 # close window
 
 def on_closing():
-    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+    if messagebox.askokcancel("Quit", "Do you want to quit?\n All data will be lost!"):
         root.destroy()
 
 
@@ -80,9 +80,9 @@ def close_output():
 
 
 txt_label = tk.Label(root, text='If you have never created a traffic before or unsure how to please refer to the Wiki\n'
-                                'you can get there by pressing the "Wiki Link" button above.\n\n'
-                                'Fill in all the sections then first press the "Create Aircraft Section" button\n'
-                                'followed by the "Create Flight Section" button, this will create one\n'
+                                'you can get there by pressing the "Wiki Link" button below.\n\n'
+                                'Fill in all the sections then first press the "Create Aircraft" button\n'
+                                'followed by the "Create Flight" buttons, this will create one\n'
                                 'outbound and return flight for one aircraft. More aircraft and flights can be added\n'
                                 'to the file by altering the required details and pressing the aircraft/flight\n'
                                 'buttons again for each set of data before saving the file.\n\n '
@@ -90,7 +90,7 @@ txt_label = tk.Label(root, text='If you have never created a traffic before or u
                                 'This program is designed to create small test or local traffic files '
                                 'and cannot be used to\n'
                                 'edit them, that is best done in a dedicated xml editor \n\n'
-                                'Be warned,If you exit the program without saving all data will be lost.',
+                                'Be warned,If you exit the program without saving all data will be lost. \n\n',
                      font=('Arial', 10), bg='powder blue', anchor="w", padx=10, justify='left')
 txt_label.grid(row=16, rowspan=9, column=0, columnspan=3)
 
@@ -98,6 +98,14 @@ txt_label.grid(row=16, rowspan=9, column=0, columnspan=3)
 # Define Comment
 def add_comment():
     print('<!-- ' + comment.get() + ' -->')
+
+    # Count Comment Button clicks
+
+    global count_comment
+
+    count_comment = count_comment + 1
+
+    comment_created.configure(text=f'Comment Created = {count_comment}', font=('Arial', 10))
 
 
 # Define Aircraft
@@ -141,9 +149,11 @@ def mod():
     aircraft_created.configure(text=f'Aircraft Created = {count_aircraft}', font=('Arial', 10))
 
 
-# Define Flight
+# Define Flights
 
-def flt():
+# Outbound Flight
+
+def outbound_flt():
     # calsig = f1.get()
     # reqair = f2.get()
     # fltrrule = f3.get()
@@ -170,8 +180,18 @@ def flt():
     print(tg[45] + f9.get() + tg[46])
     print(tg[30])
 
-    # Return flight
+    # Count Outbound Flight Button clicks
 
+    global count_outbound_flight
+
+    count_outbound_flight = count_outbound_flight + 1
+
+    outbound_flights_created.configure(text=f'Outbound Flights Created = {count_outbound_flight}', font=('Arial', 10))
+
+
+# Return Flight
+
+def return_flt():
     # calsig_r = rf1.get()
     # reqair_r = rf2.get()
     # fltrrule_r = rf3.get()
@@ -198,13 +218,13 @@ def flt():
     print(tg[45] + rf9.get() + tg[46])
     print(tg[30])
 
-    # Count Flight Button clicks
+    # Count Return Flight Button clicks
 
-    global count_flight
+    global count_return_flight
 
-    count_flight = count_flight + 1
+    count_return_flight = count_return_flight + 1
 
-    flights_created.configure(text=f'Flights Created = {count_flight}', font=('Arial', 10))
+    return_flights_created.configure(text=f'Return Flights Created = {count_return_flight}', font=('Arial', 10))
 
 
 # text variables
@@ -304,12 +324,12 @@ m12.current(0)
 # Create Aircraft section button
 
 
-but_e1 = tk.Button(root, font=('Arial', 10), text='1 - Create Aircraft section', command=mod)
+but_e1 = tk.Button(root, font=('Arial', 10), text='1 - Create Aircraft', command=mod)
 but_e1.grid(row=6, column=2)
 
-# Set Up Flight
+# Set Up Outbound Flight
 
-flight_label = tk.Label(root, text='Flight Selection', font=('Arial', 12, 'bold'), width='20', fg='blue')
+flight_label = tk.Label(root, text='Outbound Flight', font=('Arial', 12, 'bold'), width='20', fg='blue')
 flight_label.grid(row=1, column=5)
 
 f1_label = tk.Label(root, text='Call Sign', font=('Arial', 10), width='20', anchor="e")
@@ -358,9 +378,9 @@ f9_label.grid(row=11, column=4)
 f9 = tk.Entry(root, font=('Arial', 10))
 f9.grid(row=11, column=5, padx=5, pady=5)
 
-# Return Flight
+# Set Up Return Flight
 
-returnflight_label = tk.Label(root, text='Return Flight', font=('Arial', 11, 'bold'), width='20', fg='blue')
+returnflight_label = tk.Label(root, text='Return Flight', font=('Arial', 12, 'bold'), width='20', fg='blue')
 returnflight_label.grid(row=12, column=5, columnspan=2, padx=5, pady=5)
 
 rf1_label = tk.Label(root, text='Call Sign', font=('Arial', 10), width='20', anchor="e")
@@ -409,19 +429,27 @@ rf9_label.grid(row=21, column=4)
 rf9 = tk.Entry(root, font=('Arial', 10))
 rf9.grid(row=21, column=5, padx=5, pady=5)
 
-# Create Flight Section
+# Create Flight Sections
 
-but_e2 = tk.Button(root, font=('Arial', 10), text='2 - Create Flight section', command=flt)
-but_e2.grid(row=9, column=2)
+but_e2 = tk.Button(root, font=('Arial', 10), text='2 - Create Outbound Flight', command=outbound_flt)
+but_e2.grid(row=8, column=2)
 
-# Status Bar -  Number Of Aircraft and Flights created
+but_e3 = tk.Button(root, font=('Arial', 10), text='3 - Create Return Flight', command=return_flt)
+but_e3.grid(row=10, column=2)
 
+# Number Of Comments, Aircraft and Flights created
+
+comment_created = tk.Label(root, fg='red')
+comment_created.grid(row=5, column=2)
 
 aircraft_created = tk.Label(root, fg='red')
 aircraft_created.grid(row=7, column=2)
 
-flights_created = tk.Label(root, fg='red')
-flights_created.grid(row=10, column=2)
+outbound_flights_created = tk.Label(root, fg='red')
+outbound_flights_created.grid(row=9, column=2)
+
+return_flights_created = tk.Label(root, fg='red')
+return_flights_created.grid(row=11, column=2)
 
 # Wiki Link
 
@@ -434,12 +462,12 @@ def openweb():
     webbrowser.open(wiki_url, new=new)
 
 
-but_wiki = tk.Button(root, font=('Arial', 10), text='Wiki Link', command=openweb)
-but_wiki.grid(row=12, column=2)
+but_wiki = tk.Button(root, font=('Arial', 12, 'bold'), width='10', fg='green', text='Wiki Link', command=openweb)
+but_wiki.grid(row=27, column=1)
 
 # Close Button
 
-but_close = tk.Button(root, text='Save And Exit', command=close_output)
+but_close = tk.Button(root, text='Save And Exit', fg='blue', font="Helvetica 12 bold", command=close_output)
 but_close.grid(row=14, column=2)
 
 root.mainloop()
