@@ -13,7 +13,9 @@ The "Traffic_Creator.py" and "traffic_test.xml" files should be extracted to any
 
 Traffic_Creator.py can be run either through an IDE or directly from the directory via the command line/terminal by typing "python3 Traffic_Creator.py" without the quotes.
 
- In windows you can open the terminal from the directory the files are in by clicking in the address bar and typing cmd then enter.
+ In windows you can open the terminal from the directory the files are in by clicking in the address bar and typing cmd then enter. 
+
+**See bottom of this text for a Windows Executable.**
 
 The program should be self explanatory if you have delt with traffic files before but if not I suggest reading up about them on the Wiki first. -
  [Wiki.flightgear](http://wiki.flightgear.org/AI_Traffic) (link also in program).
@@ -28,6 +30,15 @@ When finished save the file with the name of your choice, all being well it can 
 
 This is not an xml editor, it can not edit traffic files, I created it to quickly write test or local files so it's not really a program for writing or editing airline schedules.
 
+
+
+### Windows Executable
+
+First test of a windows .exe file.
+
+In the "windows_64" folder is a zip file (Traffic_Creator.zip) extract the contents of the zip into a folder that has *write access* and run the "Traffic_Creator.exe" file.
+
+**This has been tested on several windows 10 computers with no problems but I believe it only runs on 64 bit machines.**
 ### Disclaimer
 This is my first Python program so any errors and bugs are entirely down to me. ;)
 

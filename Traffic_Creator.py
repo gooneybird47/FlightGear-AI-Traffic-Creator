@@ -2,9 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
-# from tkinter.filedialog import askopenfile
 import webbrowser
-# import os
 import sys
 
 tg = ['<?xml version="1.0"?>', '<trafficlist>', '</trafficlist>', '    <aircraft>', '    </aircraft>',
@@ -26,7 +24,7 @@ open("traffic_test.xml", "w").close()
 
 root = tk.Tk()
 root.geometry('1000x768')
-root.title('AI Traffic File Creator For FlightGear')
+root.title('AI Traffic File Creator For FlightGear - Author Brett Harrison (gooneybird)')
 
 # Redirect Print To File
 
@@ -51,13 +49,6 @@ root.protocol("WM_DELETE_WINDOW", on_closing)
 
 def close_output():
     sys.stdout.close()
-
-    # ("traffic_test.xml").close
-
-    # if sys.platform == 'linux2':
-    #     subprocess.call(["xdg-open", 'traffic_test.xml'])
-    # else:
-    #     os.startfile('traffic_test.xml')
 
     with open("traffic_test.xml", 'r+') as finp:
         outp = finp.read()
